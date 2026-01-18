@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 2.6rem; margin-bottom: 20px; }
+    p { font-size: 1.1rem; max-width: 720px; margin-bottom: 30px; }
+    .heart {
+      font-size: 3.5rem;
+      animation: beat 1s infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+    .btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    button {
+      padding: 12px 34px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .yes { background: #fff; color: #ff2e63; font-weight: 600; }
+    .yes:hover { transform: scale(1.08); }
+    .no { background: transparent; border: 2px solid #fff; color: #fff; }
+    .no:hover { transform: scale(0.9); }
+    .hidden { display: none; }
+    footer {
+      padding: 25px;
+      background: rgba(255,255,255,0.15);
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1 -->
+  <section id="v1">
+    <div class="heart">💘</div>
+    <h1>Hey Valentine 🌹</h1>
+    <p>This Valentine’s Day feels special… because you exist 💫</p>
+    <button class="yes" onclick="go('v2')">Tell Me More</button>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="v2" class="hidden">
+    <h1>Fun Fact 😌</h1>
+    <p>Chocolate tastes better, songs feel deeper, and days feel brighter whenever you’re around 💕</p>
+    <button class="yes" onclick="go('v3')">Aww 🥰</button>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="v3" class="hidden">
+    <h1>Another Confession 😳</h1>
+    <p>If I had one rose for every time you crossed my mind… I’d have a garden 🌹</p>
+    <div class="btns">
+      <button class="yes" onclick="go('v4')">That’s Sweet</button>
+      <button class="no" onclick="go('v4')">Hmm</button>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="v4" class="hidden">
+    <h1>Valentine Question 💌</h1>
+    <p>Will you be my Valentine this year?</p>
+    <div class="btns">
+      <button class="yes" onclick="accepted()">YES ❤️</button>
+      <button class="no" onclick="go('v5')">NO 🙈</button>
+    </div>
+  </section>
+
+  <!-- Section 5 (Flirt Mode) -->
+  <section id="v5" class="hidden">
+    <h1>Hold On 😏</h1>
+    <p>No pressure… but I come with loyalty, unlimited care, and lifetime support 😌💞</p>
+    <div class="btns">
+      <button class="yes" onclick="go('v6')">Okay Maybe</button>
+      <button class="no" onclick="go('v6')">Still Thinking</button>
+    </div>
+  </section>
+
+  <!-- Section 6 (No Escape) -->
+  <section id="v6" class="hidden">
+    <h1>Last Chance 💘</h1>
+    <p>This Valentine’s Day… it’s either us, or us 😈</p>
+    <div class="btns" id="final">
+      <button class="yes" onclick="accepted()">YES 💖</button>
+      <button class="no" onclick="removeNo()">NO 😶</button>
+    </div>
+  </section>
+
+  <!-- Section 7 (Accepted) -->
+  <section id="v7" class="hidden">
+    <div class="heart">❤️‍🔥</div>
+    <h1>Valentine Locked 🔐</h1>
+    <p>You just made this Valentine’s Day unforgettable 💍💘</p>
+  </section>
+
+  <footer>
+    Made with ❤️ for Valentine’s Day
+  </footer>
+
+  <script>
+    function go(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      window.scrollTo(0,0);
+    }
+    function removeNo() {
+      document.getElementById('final').innerHTML = '<button class="yes" onclick="accepted()">YES 💖</button>';
+    }
+    function accepted() {
+      go('v7');
+    }
+  </script>
+
+</body>
+</html>
